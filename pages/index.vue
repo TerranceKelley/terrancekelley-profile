@@ -275,7 +275,7 @@ const experience = ref([
     company: 'OneNeck IT Solutions',
     dates: 'Apr 2012 – May 2017 · 5 yrs 2 mos',
     location: 'Hybrid',
-    description: '',
+    description: 'Built and maintained Java/Spring services and internal web applications, integrating SQL/MySQL-backed systems and supporting production workloads on Linux (Ubuntu/RHEL).',
     successes: [] as string[]
   },
   {
@@ -284,7 +284,7 @@ const experience = ref([
     company: 'OneNeck IT Solutions',
     dates: 'Oct 2009 – Apr 2012 · 2 yrs 7 mos',
     location: 'On-site',
-    description: '',
+    description: 'Delivered Java/Spring and JavaScript features across customer-facing and internal systems, owning end-to-end implementation from application code through SQL changes and Linux operations.',
     successes: [] as string[]
   },
   {
@@ -293,7 +293,7 @@ const experience = ref([
     company: 'OneNeck IT Solutions',
     dates: 'Jun 2005 – Oct 2009 · 4 yrs 5 mos',
     location: 'On-site',
-    description: '',
+    description: 'Combined network/VoIP engineering with software development to improve service reliability and operational tooling.',
     successes: [] as string[]
   },
   {
@@ -302,7 +302,7 @@ const experience = ref([
     company: 'OneNeck IT Solutions',
     dates: 'Apr 2001 – Jun 2005 · 4 yrs 3 mos',
     location: 'On-site',
-    description: '',
+    description: 'Early career role spanning network engineering and software development, building a strong foundation for modern platform work.',
     successes: [] as string[]
   }
 ])
@@ -339,9 +339,9 @@ const skills = ref([
   'Firestore', 'MongoDB', 'Snowflake', 'Load Balancing', 'Cross-Account', 'Cross-Cloud',
   'EKS', 'CloudWatch', 'CloudFront', 'WAF', 'DocumentDB', 'Aurora', 'ElastiCache', 'Redis',
   'Terraform', 'Ansible', 'GitHub', 'GitHub Actions', 'Doppler', 'Prefect', 'Helm',
-  'Nuxt', 'Python', 'TypeScript', 'Dash', 'LLMs', 'Bedrock', 'Textract', 'Whisper', 'ElevenLabs',
+  'Java', 'Spring', 'JavaScript', 'Nuxt', 'Python', 'TypeScript', 'Dash', 'LLMs', 'Bedrock', 'Textract', 'Whisper', 'ElevenLabs',
   'Sigma', 'Docker', 'Kubernetes', 'CI/CD', 'Linux', 'Microservices', 'cert-manager', 'ingress-nginx', 'Prometheus',
-  'Grafana', 'Elasticsearch', 'MySQL', 'SQL', 'REST', 'Full-Stack',
+  'Grafana', 'Elasticsearch', 'MySQL', 'SQL', 'REST', 'Ubuntu', 'Red Hat (RHEL)', 'Full-Stack',
   'Agile', 'DevOps', 'Solution Architecture', 'Technical Leadership'
 ])
 </script>
