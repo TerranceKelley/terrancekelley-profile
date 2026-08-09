@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  terrancekelley-profile:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: terrancekelley-profile
+    restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

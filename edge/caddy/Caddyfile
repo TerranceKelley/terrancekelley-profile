@@ -1,0 +1,51 @@
+{
+	email admin@kloudtastic.com
+}
+
+# ── Portfolio (always on edge, survives Cloudtastic outage) ──
+
+www.terrancekelley.com {
+	root * /srv/www/terrancekelley
+	encode gzip
+	file_server
+	try_files {path} {path}/ /index.html
+}
+
+terrancekelley.com {
+	redir https://www.terrancekelley.com{uri} permanent
+}
+
+# ── Pi-hole admin (runs on edge) ──
+
+pihole.kloudtastic.com {
+	reverse_proxy pihole:80
+}
+
+# ── Homelab (proxy to Cloudtastic; 502 when it is down) ──
+
+(homelab) {
+	reverse_proxy https://192.168.4.238 {
+		header_up Host {host}
+		header_up X-Real-IP {remote_host}
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Forwarded-Proto {scheme}
+		transport http {
+			tls
+			tls_server_name {http.request.host}
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+kloudtastic.com,
+hub.kloudtastic.com,
+auth.kloudtastic.com,
+chat.kloudtastic.com,
+breakitdown.kloudtastic.com,
+status.kloudtastic.com,
+dockge.kloudtastic.com,
+comfy.kloudtastic.com,
+ollama.kloudtastic.com,
+ibgw.kloudtastic.com {
+	import homelab
+}
