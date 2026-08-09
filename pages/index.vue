@@ -31,6 +31,25 @@
         <p class="max-w-xl mx-auto text-slate-400 text-base mb-8 animate-fade-in-up opacity-0 animate-delay-400" style="animation-fill-mode: forwards;">
           I automate infrastructure and lead DevOps teams so delivery is faster, more reliable, and scalable.
         </p>
+        <div class="max-w-4xl mx-auto mb-8 animate-fade-in-up opacity-0" style="animation-fill-mode: forwards;">
+          <div class="flex flex-wrap justify-center gap-2">
+            <span class="px-3 py-1.5 bg-void-800/80 text-slate-300 rounded border border-slate-600/50 text-sm font-medium">
+              AWS primary · GCP secondary
+            </span>
+            <span class="px-3 py-1.5 bg-void-800/80 text-slate-300 rounded border border-slate-600/50 text-sm font-medium">
+              Multi-cloud → AWS-only consolidation
+            </span>
+            <span class="px-3 py-1.5 bg-void-800/80 text-slate-300 rounded border border-slate-600/50 text-sm font-medium">
+              Terraform + EKS + CI/CD automation
+            </span>
+            <span class="px-3 py-1.5 bg-void-800/80 text-slate-300 rounded border border-slate-600/50 text-sm font-medium">
+              2 weeks → ~1 hour infra delivery (automation)
+            </span>
+            <span class="px-3 py-1.5 bg-void-800/80 text-slate-300 rounded border border-slate-600/50 text-sm font-medium">
+              VMware → Nutanix migration ~2 months early
+            </span>
+          </div>
+        </div>
         <div class="flex gap-3 justify-center flex-wrap animate-fade-in-up opacity-0 animate-delay-500" style="animation-fill-mode: forwards;">
           <a href="#contact" class="px-5 py-2.5 bg-neon-cyan/20 text-neon-cyan border border-neon-cyan rounded font-medium text-sm hover:shadow-neon-cyan hover:bg-neon-cyan/30 transition-all duration-200">
             Get in touch
@@ -66,10 +85,10 @@
         <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center tracking-tight text-glow-cyan">
           About
         </h2>
-        <div class="max-w-3xl mx-auto">
-          <p class="text-lg text-slate-300 mb-4">
-            I am an IT professional with over 23 years of experience, specializing in automating infrastructure, streamlining operations, and driving continuous improvement. My focus is on leveraging DevOps strategies to accelerate deployment processes, enhance cross-team collaboration, and deliver scalable solutions that improve efficiency and performance. I have successfully led teams through complex migrations, implemented CI/CD pipelines, and developed automation that dramatically reduces delivery times.
-          </p>
+	        <div class="max-w-3xl mx-auto">
+	          <p class="text-lg text-slate-300 mb-4">
+	            I am an IT professional with over 23 years of experience, specializing in AWS-first platform engineering, infrastructure automation, and DevOps leadership. My focus is on accelerating deployment processes, improving reliability and security, and delivering scalable systems that reduce operational drag. I have led teams through complex migrations, implemented CI/CD pipelines, and built automation that dramatically reduces delivery times.
+	          </p>
           <p class="text-lg text-slate-300 mb-4">
             My background spans cloud infrastructure management, automation, and iterative feedback loops, all while maintaining a sharp focus on cost optimization, security, and scalability. I'm passionate about solving complex problems and transforming the way organizations deliver software, always looking for new ways to innovate and improve.
           </p>
@@ -121,14 +140,27 @@
               {{ tech }}
             </span>
           </div>
-          <div v-if="project.url || project.repo" class="flex gap-4">
-            <a v-if="project.url" :href="project.url" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white underline">Live</a>
-            <a v-if="project.repo" :href="project.repo" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white underline">Code</a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
+	          <div v-if="project.url || project.repo" class="flex gap-4">
+              <NuxtLink
+                v-if="project.url && isInternalUrl(project.url)"
+                :to="project.url"
+                class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white underline"
+              >
+                Case study
+              </NuxtLink>
+	            <a
+                v-else-if="project.url"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white underline"
+              >Live</a>
+	            <a v-if="project.repo" :href="project.repo" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:text-white underline">Code</a>
+	          </div>
+	        </div>
+	      </div>
+	      </div>
+	    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="container mx-auto px-4 py-16 md:py-20 border-t border-neon-cyan/10">
@@ -165,14 +197,38 @@
 </template>
 
 <script setup lang="ts">
+useSeoMeta({
+  title: 'Terrance Kelley - AI Platform Engineer · DevOps · AWS',
+  description: 'AWS-first AI Platform / DevOps engineer and leader. I automate infrastructure, harden platforms, and accelerate delivery with Terraform, Kubernetes/EKS, CI/CD, and observability.',
+  ogTitle: 'Terrance Kelley - AI Platform Engineer · DevOps · AWS',
+  ogDescription: 'AWS-first AI Platform / DevOps engineer and leader. Terraform, EKS, CI/CD automation, observability, and pragmatic security.',
+  ogType: 'website'
+})
+
+const isInternalUrl = (url: string) => url.startsWith('/')
+
 const experience = ref([
   {
     id: 1,
+    title: 'Senior Cloud/DevOps Engineer (Contract)',
+    company: 'World Wide Express / ShipStation Global',
+    dates: 'Jun 2026 – Present',
+    location: 'Remote',
+    description: 'Contract role supporting an acquired product platform: consolidation and hardening of cloud infrastructure, identity, and data services to improve reliability and reduce operational complexity.',
+    successes: [
+      'Migrated infrastructure and application delivery from multi-cloud (GCP Cloud Run + AWS) to AWS-only',
+      'Updated authentication flows and platform configuration to support the new AWS baseline',
+      'Added CDN + WAF protections to harden edge security and improve performance',
+      'Migrated MongoDB Atlas to Amazon DocumentDB with production cutover planning and validation'
+    ]
+  },
+  {
+    id: 9,
     title: 'Senior Cloud/DevOps Engineer',
     company: 'Bear Cognition, Inc.',
-    dates: 'Jun 2025 – Present · 10 mos',
+    dates: 'Jun 2025 – Jun 2026',
     location: 'Charleston, SC · Hybrid',
-    description: 'Full-stack cloud and platform engineering across GCP and AWS: serverless (Cloud Run, Lambda), APIs (API Gateway, Route 53), load balancing, and cross-account and cross-cloud management. Building and maintaining data pipelines and stores (Firestore, MongoDB, Snowflake) and CI/CD with GitHub Actions, Doppler for secrets, and Prefect for orchestration. Full-stack delivery with Nuxt, Python, and TypeScript; analytics and dashboards with Dash and Sigma. Integrating LLMs and AI services (Bedrock, Textract, Whisper, ElevenLabs and others) to add efficiency to project deployments and to full-stack cloud delivery—automating and streamlining how we ship and operate.',
+    description: 'Full-stack cloud and platform engineering across GCP and AWS: serverless (Cloud Run, Lambda), APIs (API Gateway, Route 53), load balancing, and cross-account and cross-cloud management. Built and maintained data pipelines and stores (Firestore, MongoDB, Snowflake) and CI/CD with GitHub Actions, Doppler for secrets, and Prefect for orchestration. Full-stack delivery with Nuxt, Python, and TypeScript; analytics and dashboards with Dash and Sigma. Integrated LLMs and AI services (Bedrock, Textract, Whisper, ElevenLabs and others) to streamline delivery and operations.',
     successes: [] as string[]
   },
   {
@@ -262,18 +318,18 @@ const projects = ref([
   },
   {
     id: 2,
-    title: 'Project 2',
-    description: 'Description of your second project',
-    tech: ['Tech 1', 'Tech 2'],
-    url: '',
+    title: 'Self-hosted Prefect on AWS (EKS)',
+    description: 'Production-ready self-managed Prefect platform on AWS: EKS (EC2 + Fargate), Aurora PostgreSQL, ElastiCache Redis, ingress + TLS automation, and Prometheus/Grafana monitoring.',
+    tech: ['AWS', 'EKS', 'Terraform', 'Helm', 'Prometheus/Grafana'],
+    url: '/case-studies/prefect-on-eks',
     repo: ''
   },
   {
     id: 3,
-    title: 'Project 3',
-    description: 'Description of your third project',
-    tech: ['Tech 1', 'Tech 2'],
-    url: '',
+    title: 'AWS platform consolidation + security hardening',
+    description: 'Consolidated a multi-cloud product platform onto AWS-only, upgraded auth and edge controls (CDN + WAF), and migrated MongoDB Atlas to Amazon DocumentDB for simpler operations.',
+    tech: ['AWS', 'CloudFront', 'WAF', 'DocumentDB', 'CI/CD'],
+    url: '/case-studies/aws-platform-consolidation',
     repo: ''
   }
 ])
@@ -281,12 +337,11 @@ const projects = ref([
 const skills = ref([
   'GCP', 'AWS', 'Azure', 'Cloud Run', 'Lambda', 'API Gateway', 'Route 53',
   'Firestore', 'MongoDB', 'Snowflake', 'Load Balancing', 'Cross-Account', 'Cross-Cloud',
-  'Terraform', 'Ansible', 'GitHub', 'GitHub Actions', 'Doppler', 'Prefect',
+  'EKS', 'CloudWatch', 'CloudFront', 'WAF', 'DocumentDB', 'Aurora', 'ElastiCache', 'Redis',
+  'Terraform', 'Ansible', 'GitHub', 'GitHub Actions', 'Doppler', 'Prefect', 'Helm',
   'Nuxt', 'Python', 'TypeScript', 'Dash', 'LLMs', 'Bedrock', 'Textract', 'Whisper', 'ElevenLabs',
-  'Sigma', 'Docker', 'Kubernetes', 'CI/CD', 'Linux', 'Microservices',
+  'Sigma', 'Docker', 'Kubernetes', 'CI/CD', 'Linux', 'Microservices', 'cert-manager', 'ingress-nginx', 'Prometheus',
   'Grafana', 'Elasticsearch', 'MySQL', 'SQL', 'REST', 'Full-Stack',
   'Agile', 'DevOps', 'Solution Architecture', 'Technical Leadership'
 ])
 </script>
-
-
