@@ -311,9 +311,9 @@ const projects = ref([
   {
     id: 1,
     title: 'Breakitdown',
-    description: 'AI-powered idea breakdown and project management. Turn rough ideas into structured tasks and timelines.',
+    description: 'AI-powered idea breakdown and project management. Turn rough ideas into structured tasks and timelines. (Public demo)',
     tech: ['Nuxt 3', 'TypeScript', 'OpenAI', 'Tailwind CSS'],
-    url: 'https://breakitdown.kloudtastic.com',
+    url: 'https://demo-breakitdown.kloudtastic.com',
     repo: ''
   },
   {
